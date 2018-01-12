@@ -68,7 +68,8 @@ def days_between(year1, month1, day1, year2, month2, day2):
         date1 = datetime.date(year1,month1,day1)
         date2 = datetime.date(year2,month2,day2)
         if date2 > date1:
-            return date2 - date1
+            difference = date2 - date1
+            return difference.days
         else:
             return 0
     else: 
@@ -86,9 +87,25 @@ def age_in_days(year, month, day):
       Returns 0 if the input date is invalid or if the input
       date is in the future.
     """
-    return 
-print(days_in_month(1989, 12))
+    today = datetime.date.today()
+    if is_valid_date(year, month, day) == True:
+        birthday = datetime.date(year,month,day)
+        if birthday <= today:
+            days_between = today- birthday
+            return days_between.days
+        else: 
+            return 0
+    else:
+        return 0
+    
+year = 2018
+month = 1
+day = 11
 
-print(is_valid_date(2000, 42, 18))
+print(days_in_month(year, month))
 
-print(days_between(2018, 9, 18, 2017, 9, 18))
+print(is_valid_date(year, month, day))
+
+print(days_between(year, month, day, 2018, 1, 12))
+
+print(age_in_days(year, month, day))
