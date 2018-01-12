@@ -42,6 +42,7 @@ def is_valid_date(year, month, day):
     Returns:
       True if year-month-day is a valid date and
       False otherwise
+    
     """
     if datetime.MINYEAR <= year <= datetime.MAXYEAR and 1<=month<=12 and  1<=day<=days_in_month(year,month):
         return True
@@ -63,8 +64,9 @@ def days_between(year1, month1, day1, year2, month2, day2):
       Returns 0 if either date is invalid or the second date is
       before the first date.
     """
-    
-    if is_valid_date(year1, month1, day1) and is_valid_date(year2, month2, day2) ==True:
+    valid1 = is_valid_date(year1, month1, day1)
+    valid2 = is_valid_date(year2, month2, day2)
+    if valid1 and valid2  is True:
         date1 = datetime.date(year1,month1,day1)
         date2 = datetime.date(year2,month2,day2)
         if date2 > date1:
@@ -88,24 +90,13 @@ def age_in_days(year, month, day):
       date is in the future.
     """
     today = datetime.date.today()
-    if is_valid_date(year, month, day) == True:
+    if is_valid_date(year, month, day) is True:
         birthday = datetime.date(year,month,day)
         if birthday <= today:
-            days_between = today- birthday
-            return days_between.days
+            days_since = today- birthday
+            return days_since.days
         else: 
             return 0
     else:
         return 0
-    
-year = 2018
-month = 1
-day = 11
 
-print(days_in_month(year, month))
-
-print(is_valid_date(year, month, day))
-
-print(days_between(year, month, day, 2018, 1, 12))
-
-print(age_in_days(year, month, day))
