@@ -1,6 +1,6 @@
 //Programming Exercise: Advanced Modifying Images
 
-/*Part 1: Write the green screen algorithm you saw in the lecture video yourself.
+/*Part 1: Write the green screen algorithm you saw in the lecture video yourself.*/
 
 //1. Start with the foreground image  (fgimage)
 
@@ -78,8 +78,25 @@ for (var px of img.values()){
   if (y>img.getHeight()/2){
     px.setBlue(255);
   }
-  else {
+if (y<=img.getHeight()/2 && x >=img.getWidth()/2){
     px.setGreen(255);
   }
 }
 print (img);
+
+/*Part 3
+Write a function named setBlack that has one parameter pixel (representing a single pixel) and returns pixel with its red, green, and blue components changed so that the pixel’s color is black.
+
+Now you will write another function named addBorder. This function will add a black border to an image, such as in the following example:
+
+
+On the left, we have the original image, and on the right, we have modified the image by giving it a black border that is 10 pixels thick. Note that the image size of the image with the border is the same as the original image because the border is not added around the outside of the original image, instead it covers up some of the original image.*/
+
+function setBlack(pixel){
+    pixel.setRed(0);
+    pixel.setGreen(0);
+    pixel.setBlue(0);
+}
+
+
+
